@@ -107,7 +107,6 @@ class Huffboth():
 
     def getTree(self):
         return self.codes
-# input = "Elon Reeve Musk FRS is a business magnate, industrial designer, engineer, and philanthropist. He is the founder, CEO, CTO and chief designer of SpaceX; early investor, CEO and product architect of Tesla, Inc.; founder of The Boring Company; co-founder of Neuralink; and co-founder and initial co-chairman of OpenAI. Wikipedia"
 
 # obj = Huffboth()
 
