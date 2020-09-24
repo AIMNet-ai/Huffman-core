@@ -67,12 +67,12 @@ class Huffboth():
             l = hq.heappop(itemqueue)
             r = hq.heappop(itemqueue)
             n = Node(None, r.weight+l.weight)
-            
+
             n.setChildren(l, r)
             hq.heappush(itemqueue, n)
             if(index == 2):
                 self.root = n
-                print(self.root)
+                #print(self.root)
             index = index - 1
 
         codes = {}
@@ -105,10 +105,12 @@ class Huffboth():
         print(result)
 
 
-input = "aababcabcd"
+input = "Elon Reeve Musk FRS is a business magnate, industrial designer, engineer, and philanthropist. He is the founder, CEO, CTO and chief designer of SpaceX; early investor, CEO and product architect of Tesla, Inc.; founder of The Boring Company; co-founder of Neuralink; and co-founder and initial co-chairman of OpenAI. Wikipedia"
 
 obj = Huffboth()
-print(obj.huffman(input))
+
+encoded = obj.huffman(input)
+print(encoded)
 print(input)
-obj.decodeHuff('0010010111010111110')
+obj.decodeHuff(encoded[1])
 # ({'a': '0', 'c': '111', 'b': '10', 'd': '110'}, '0010010111010111110')
