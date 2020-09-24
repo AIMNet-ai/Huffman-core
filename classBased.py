@@ -54,11 +54,12 @@ class Node(object):
 
 class Huffboth():
     root = Node(0, 0)
+    codes = {}
 
     def __init__(self):
         self.root = Node(0, 0)
 
-    def huffman(self, input):
+    def Encode(self, input):
         itemqueue = [Node(a, len(list(b))) for a, b in groupby(sorted(input))]
 
         hq.heapify(itemqueue)
@@ -75,22 +76,22 @@ class Huffboth():
                 # print(self.root)
             index = index - 1
 
-        codes = {}
+        self.codes = {}
 
         def codeIt(s, node):
             if node.item:
                 if not s:
-                    codes[node.item] = "0"
+                    self.codes[node.item] = "0"
                 else:
-                    codes[node.item] = s
+                    self.codes[node.item] = s
             else:
                 codeIt(s+"0", node.left)
                 codeIt(s+"1", node.right)
 
         codeIt("", itemqueue[0])
-        return codes, "".join([codes[a] for a in input])
+        return "".join([self.codes[a] for a in input])
 
-    def decodeHuff(self, s):
+    def Decode(self, s):
         root = self.root
         current = root
         result = ''
@@ -102,9 +103,10 @@ class Huffboth():
             if current.left == None and current.right == None:
                 result += current.item
                 current = root
-        print(result)
+        return result
 
-
+    def getTree():
+        return self.codes
 # input = "Elon Reeve Musk FRS is a business magnate, industrial designer, engineer, and philanthropist. He is the founder, CEO, CTO and chief designer of SpaceX; early investor, CEO and product architect of Tesla, Inc.; founder of The Boring Company; co-founder of Neuralink; and co-founder and initial co-chairman of OpenAI. Wikipedia"
 
 # obj = Huffboth()
