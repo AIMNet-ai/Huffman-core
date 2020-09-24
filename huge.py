@@ -2,7 +2,7 @@ import classBased as cb
 Huffboth = cb.Huffboth()
 import os
 
-file = "sample-file.txt"
+file = "huge-text-file.txt"
 def _to_Bytes(data):
   b = bytearray()
   for i in range(0, len(data), 8):
@@ -19,12 +19,12 @@ with open(file, 'rb') as r:
     else:
         print("Failed!")
         
-    fileOP = open("compressed_file.bin", "wb")
+    fileOP = open("huge-compressed_file.bin", "wb")
     fileOP.write(_to_Bytes(encoded_text))
-    
-    _o = os.path.getsize('sample-file.txt')
-    _c = os.path.getsize('compressed_file.bin')
+    fileOP.close()
+    _o = os.path.getsize('huge-text-file.txt')
+    _c = os.path.getsize('huge-compressed_file.bin')
     print(f'Original file: {_o} bytes')
     print(f'Compressed file: {_c} bytes')
     print('Compressed file to about {}% of original'.format(round((((_o-_c)/_o)*100), 0)))
-    fileOP.close()
+    
